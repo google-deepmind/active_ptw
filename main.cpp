@@ -22,8 +22,6 @@
 #include <string>
 #include <vector>
 
-#include "progressbar.hpp"
-
 #include "common.hpp"
 
 // bandit algorithms
@@ -222,8 +220,6 @@ static int plotMode() {
         "ParanoidPTW"
     };
 
-    progressbar bar(agents.size() * Params.PlotRepeats);
-
     std::vector<std::vector<std::vector<double>>> regrets;
     std::vector<size_t> cpts;
     auto original_agent_seed = Params.AgentSeed;
@@ -257,8 +253,6 @@ static int plotMode() {
                 regret -= bp->cummulativeReward();
                 regrets[i][j].push_back(regret);
             }
-
-            bar.update();
         }
     }
 
